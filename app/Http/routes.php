@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/tarefas', function() {
+Route::get('tarefas', function() {
 	return view('pages.tarefas');
 });
+
+Route::post('tarefas', 'TaskController@store');
