@@ -19,4 +19,5 @@ Route::get('tarefas', function() {
 	return view('pages.tarefas');
 });
 
+Route::get('list_tasks', 'TaskController@index');
 Route::post('tarefas', 'TaskController@store');

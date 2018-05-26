@@ -1,6 +1,6 @@
 @extends('main')
 @section('content')
-
+    
     <form class="form-horizontal" action="{{ url('workforce-allocate')}}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <legend>Registro de tarefas</legend>
@@ -57,7 +57,8 @@
         </div>
         <hr>
         <legend>Lista de tarefas</legend>
-        <table class="table table-striped">
+        <table id="table" class="table table-striped">
+            <thead>
             <tr>
                 <th>código</th>
                 <th>tipo</th>
@@ -65,6 +66,16 @@
                 <th>término</th>
                 <th>entrega</th>
             </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
         </table>
     </form>
+
+    <script>
+        $(document).ready(() => {
+            load();
+        })
+    </script>
 @endsection

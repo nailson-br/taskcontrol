@@ -17,7 +17,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        return response()->json($tasks, 200);
     }
 
     /**
@@ -39,19 +40,21 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        return ("ok");
+        //return ("ok");
         $task = new Task();
 
-        $cod = $request->task_cod;
-        $type = $request->task_type;
-        $start = $request->start_date;
-        $end = $request->end_date;
-        $deploy = $request->deploy_date;
-        $front = $request->front;
-        $back = $request->back;
-        $qa = $request->qa;
+
+        $task->task_cod = $request->task_cod;
+        $task->task_type = $request->task_type;
+        $task->start_date = $request->start_date;
+        $task->end_date = $request->end_date;
+        $task->deploy_date = $request->deploy_date;
+        $task->front = $request->front == 'on' ? true : false;
+        $task->back = $request->back == 'on' ? true : false;
+        $task->qa = $request->qa == 'on' ? true : false;
 
         $task->save();
+        return response()->json($task, 201);
     }
 
     /**
@@ -62,7 +65,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
