@@ -19,5 +19,9 @@ Route::get('tarefas', function() {
 	return view('pages.tarefas');
 });
 
-Route::get('list_tasks', 'TaskController@index');
 Route::post('tarefas', 'TaskController@store');
+Route::get('lista_tarefas', 'TaskController@index');
+Route::get('detalhes_da_tarefa/{id}', 'TaskController@edit');
+
+Route::post('sub_tarefa', 'SubTaskController@store');
+Route::get('lista_sub_tarefas', 'SubTaskController@index');

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\SubTask;
 use App\Task;
 use Illuminate\Http\Request;
-use Input;
 
-class TaskController extends Controller
+class SubTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        return response()->json($tasks, 200);
+        $subtasks = SubTask::all();
+        return response()->json($subtasks, 200);
     }
 
     /**
@@ -40,20 +40,19 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        $task = new Task();
+        $subtask = new SubTask();
+        $task = Task::where('task_cod', $request->task_cod)->first();
 
-        $task->task_cod = $request->task_cod;
-        $task->task_type = $request->task_type;
-        $task->task_description = $request->task_description;
-        $task->start_date = $request->start_date;
-        $task->end_date = $request->end_date;
-        $task->deploy_date = $request->deploy_date;
-        $task->front = $request->front == 'on' ? true : false;
-        $task->back = $request->back == 'on' ? true : false;
-        $task->qa = $request->qa == 'on' ? true : false;
+        $subtask->task_id = $task->id;
+        $subtask->cod = $request->subtask_cod;
+        $subtask->type = $request->subtask_type;
+        $subtask->description = $request->subtask_description;
+        $subtask->front = $request->front == 'on' ? true : false;
+        $subtask->back = $request->back == 'on' ? true : false;
+        $subtask->qa = $request->qa == 'on' ? true : false;
+        $subtask->save();
 
-        $task->save();
-        return response()->json($task, 201);
+        return response()->json($subtask, 201);
     }
 
     /**
@@ -64,7 +63,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -75,8 +74,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::find($id);
-        return view('pages.detalhes-da-tarefa')->with('task', $task);
+        //
     }
 
     /**

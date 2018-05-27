@@ -1,13 +1,18 @@
 @extends('main')
 @section('content')
     
-    <form class="form-horizontal" action="{{ url('workforce-allocate')}}" method="post" enctype="multipart/form-data">
+    <form id="newTaskForm" class="form-horizontal" action="{{ url('workforce-allocate')}}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <legend>Registro de tarefas</legend>
         <div class="form-group">
             <label class="col-md-1 control-label" for="task_cod">código</label>
             <div class="col-md-2">
                 <input id="task_cod" name="task_cod" type="text" placeholder="código" class="form-control input-md" >
+            </div>
+
+            <label class="col-md-1 control-label" for="task_description">descrição</label>
+            <div class="col-md-5">
+                <input id="task_description" name="task_description" type="text" placeholder="descrição" class="form-control input-md" >
             </div>
 
             <label class="col-md-1 control-label" for="task_type">tipo</label>
@@ -35,47 +40,52 @@
             <div class="col-md-2">
                 <input id="deploy_date" name="deploy_date" type="date" class="form-control input-md" >
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="checkbox-inline">
-                <input id="back" type="checkbox" data-toggle="toggle">Back
-            </label>
-            <label class="checkbox-inline">
-                <input id="front" type="checkbox" data-toggle="toggle">Front
-            </label>
-            <label class="checkbox-inline">
-                <input id="qa" type="checkbox" data-toggle="toggle">QA
-            </label>
+            <div class="col-md-3 text-center">
+                <div class="form-group">
+                    <label class="checkbox-inline">
+                        <input id="back" type="checkbox" data-toggle="toggle">Back
+                    </label>
+                    <label class="checkbox-inline">
+                        <input id="front" type="checkbox" data-toggle="toggle">Front
+                    </label>
+                    <label class="checkbox-inline">
+                        <input id="qa" type="checkbox" data-toggle="toggle">QA
+                    </label>
+                </div>
+            </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-4">
-                <button id="submit" name="submit" class="btn btn-primary" type="button" onclick="mandar();">Salvar</button>
+            <div class="col-md-12 text-right">
+                <button id="submit" name="submit" class="btn btn-primary" type="button" onclick="saveNewTask();">Salvar</button>
                 <button id="cancel" name="cancel" class="btn btn-danger" type="button" onclick="window.location='{{ URL::previous() }}'">Cancelar</button>
             </div>
         </div>
         <hr>
         <legend>Lista de tarefas</legend>
-        <table id="table" class="table table-striped">
-            <thead>
-            <tr>
-                <th>código</th>
-                <th>tipo</th>
-                <th>início</th>
-                <th>término</th>
-                <th>entrega</th>
-            </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <div style="display:block; max-height: 300px; overflow-y: auto; -ms-overflow-style: -ms-autohiding-scrollbar;">
+            <table id="table" class="table table-striped table-hover table-condensed table-scrollable">
+                <thead>
+                <tr>
+                    <th>código</th>
+                    <th>tipo</th>
+                    <th>início</th>
+                    <th>término</th>
+                    <th>entrega</th>
+                    <th>editar</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
     </form>
 
     <script>
         $(document).ready(() => {
-            load();
+            loadTasks();
         })
     </script>
 @endsection
