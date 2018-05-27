@@ -48,9 +48,9 @@ class TaskController extends Controller
         $task->start_date = $request->start_date;
         $task->end_date = $request->end_date;
         $task->deploy_date = $request->deploy_date;
-        $task->front = $request->front == 'on' ? true : false;
-        $task->back = $request->back == 'on' ? true : false;
-        $task->qa = $request->qa == 'on' ? true : false;
+        $task->front = $request->front == 'true' ? true : false;
+        $task->back = $request->back == 'true' ? true : false;
+        $task->qa = $request->qa == 'true' ? true : false;
 
         $task->save();
         return response()->json($task, 201);

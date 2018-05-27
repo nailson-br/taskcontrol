@@ -15,9 +15,14 @@ class SubTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = NULL)
     {
-        $subtasks = SubTask::all();
+        if ($id) {
+            $task = Task::where('task_cod', $id)->first();
+            $subtasks = SubTask::where('task_id', $task->id)->get();
+        } else {
+            $subtasks = SubTask::all();
+        }
         return response()->json($subtasks, 200);
     }
 
@@ -47,9 +52,9 @@ class SubTaskController extends Controller
         $subtask->cod = $request->subtask_cod;
         $subtask->type = $request->subtask_type;
         $subtask->description = $request->subtask_description;
-        $subtask->front = $request->front == 'on' ? true : false;
-        $subtask->back = $request->back == 'on' ? true : false;
-        $subtask->qa = $request->qa == 'on' ? true : false;
+        $subtask->front = $request->front == 'true' ? true : false;
+        $subtask->back = $request->back == 'true' ? true : false;
+        $subtask->qa = $request->qa == 'true' ? true : false;
         $subtask->save();
 
         return response()->json($subtask, 201);

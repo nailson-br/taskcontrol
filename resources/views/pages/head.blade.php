@@ -27,12 +27,13 @@
                   start_date:$('#start_date').val(),
                   end_date:$('#end_date').val(),
                   deploy_date:$('#deploy_date').val(),
-                  back:$('#back').val(),
-                  front:$('#front').val(),
-                  qa:$('#qa').val()
+                  back:$('#back').is(':checked'),
+                  front:$('#front').is(':checked'),
+                  qa:$('#qa').is(':checked')
               },
               success: function(response) {
                   // console.log(response);
+                  console.log('back: ' + $('#back').is(':checked'));
                   //alert(response.message);
                   addNewTaskLine(response);
                   $('#newTaskForm')[0].reset();
@@ -55,10 +56,10 @@
               url: '/lista_tarefas',
               type: 'GET',
               success: function(response) {
-                console.log(response)
+                // console.log(response)
                   // $('.tr').remove();
                   for (i = 0; i < response.length; i++) {
-                    console.log(response[i])
+                    // console.log(response[i])
                     addNewTaskLine(response[i]);
                   }
               }
@@ -75,9 +76,9 @@
                   subtask_cod:$('#subtask_cod').val(),
                   subtask_type:$('#subtask_type').val(),
                   subtask_description:$('#subtask_description').val(),
-                  back:$('#subtask_back').val(),
-                  front:$('#subtask_front').val(),
-                  qa:$('#subtask_qa').val()
+                  back:$('#subtask_back').is(':checked'),
+                  front:$('#subtask_front').is(':checked'),
+                  qa:$('#subtask_qa').is(':checked')
               },
               success: function(response) {
                   // console.log(response);
@@ -100,13 +101,13 @@
 
       loadSubTasks = function() {
           $.ajax({
-              url: '/lista_sub_tarefas',
+              url: '/lista_sub_tarefas/' + $('#task_cod').val(),
               type: 'GET',
               success: function(response) {
-                // console.log(response)
+                console.log($('#task_cod').val())
                   // $('.tr').remove();
                   for (i = 0; i < response.length; i++) {
-                    console.log(response[i])
+                    // console.log(response[i])
                     addNewSubTaskLine(response[i]);
                   }
               }

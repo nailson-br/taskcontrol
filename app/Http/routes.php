@@ -24,4 +24,4 @@ Route::get('lista_tarefas', 'TaskController@index');
 Route::get('detalhes_da_tarefa/{id}', 'TaskController@edit');
 
 Route::post('sub_tarefa', 'SubTaskController@store');
-Route::get('lista_sub_tarefas', 'SubTaskController@index');
+Route::get('lista_sub_tarefas/{id?}', 'SubTaskController@index');
