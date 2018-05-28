@@ -15,10 +15,10 @@ class SubTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = NULL)
+    public function index($task_cod = NULL)
     {
-        if ($id) {
-            $task = Task::where('task_cod', $id)->first();
+        if ($task_cod) {
+            $task = Task::where('task_cod', $task_cod)->first();
             $subtasks = SubTask::where('task_id', $task->id)->get();
         } else {
             $subtasks = SubTask::all();

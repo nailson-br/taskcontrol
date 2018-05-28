@@ -42,11 +42,15 @@
       }
 
       addNewTaskLine = function (response) {
+        var opt = {timezone: "America/Sao_Paulo"};
+        convertedStartDate = new Date(response.start_date).toLocaleDateString("pt-BR", opt);
+        convertedEndDate = new Date(response.end_date).toLocaleDateString("pt-BR");
+        convertedDeployDate = new Date(response.deploy_date).toLocaleDateString("pt-BR");
         $("#table tbody").append("<tr><td>" + response.task_cod + "</td>" +
                           "<td>" + response.task_type +"</td>" +
-                          "<td>" + response.start_date +"</td>" +
-                          "<td>" + response.end_date +"</td>" +
-                          "<td>" + response.deploy_date +"</td>" +
+                          "<td>" + convertedStartDate +"</td>" +
+                          "<td>" + convertedEndDate +"</td>" +
+                          "<td>" + convertedDeployDate +"</td>" +
                           "<td><a href=\"/detalhes_da_tarefa/" + response.id +"\"><span class=\"glyphicon glyphicon-edit\"></span></a></td>" +
                           "</tr>");
       }
@@ -56,7 +60,7 @@
               url: '/lista_tarefas',
               type: 'GET',
               success: function(response) {
-                // console.log(response)
+                console.log(response);
                   // $('.tr').remove();
                   for (i = 0; i < response.length; i++) {
                     // console.log(response[i])
@@ -84,7 +88,8 @@
                   // console.log(response);
                   // alert(response.message);
                   addNewSubTaskLine(response);
-                  $('#x').click();
+                  // recolhe o form para nova subtask
+                  // $('#newSubTaskLink').click();
                   $('#newSubTaskForm')[0].reset();
               }
           });

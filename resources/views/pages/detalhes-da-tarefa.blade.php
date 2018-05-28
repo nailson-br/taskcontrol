@@ -24,17 +24,17 @@
         <div class="form-group">
             <label class="col-md-1 control-label" for="start_date">início</label>
             <div class="col-md-2">
-                <input id="start_date" name="start_date" type="text" value="{!! $task->start_date !!}" placeholder="código" class="form-control input-md" readonly >
+                <input id="start_date" name="start_date" type="text" value="{!! date("d/m/Y", strtotime($task->start_date)) !!}" placeholder="código" class="form-control input-md" readonly >
             </div>
 
             <label class="col-md-1 control-label" for="end_date">término</label>
             <div class="col-md-2">
-                <input id="end_date" name="end_date" type="text" value="{!! $task->end_date !!}" placeholder="código" class="form-control input-md" readonly >
+                <input id="end_date" name="end_date" type="text" value="{!! date("d/m/Y", strtotime($task->end_date)) !!}" placeholder="código" class="form-control input-md" readonly >
             </div>
 
             <label class="col-md-1 control-label" for="deploy_date">entrega</label>
             <div class="col-md-2">
-                <input id="deploy_date" name="deploy_date" type="text" value="{!! $task->deploy_date !!}" placeholder="código" class="form-control input-md" readonly >
+                <input id="deploy_date" name="deploy_date" type="text" value="{!! date("d/m/Y", strtotime($task->deploy_date)) !!}" placeholder="código" class="form-control input-md" readonly >
             </div>
 
             @if(($task->task_type == 'Task') || ($task->task_type == 'Bug'))
@@ -81,7 +81,7 @@
             <hr>
             <div class="form-group">
                 <div class="col-md-12 text-right">
-                    <a id="x" data-toggle="collapse" href="#subTaskTable">Adicionar sub tarefa</a>
+                    <a id="newSubTaskLink" data-toggle="collapse" href="#subTaskTable">Adicionar sub tarefa</a>
                 </div>
             </div>
             <div id="subTaskTable" class="collapse">
