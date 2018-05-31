@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="/js/bootstrap.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/js/moment.js" charset="utf-8"></script>
 
   <script type="text/javascript">
 
@@ -43,9 +44,12 @@
 
       addNewTaskLine = function (response) {
         var opt = {timezone: "America/Sao_Paulo"};
-        convertedStartDate = new Date(response.start_date).toLocaleDateString("pt-BR", opt);
-        convertedEndDate = new Date(response.end_date).toLocaleDateString("pt-BR");
-        convertedDeployDate = new Date(response.deploy_date).toLocaleDateString("pt-BR");
+        // convertedStartDate = new Date(response.start_date).toLocaleDateString("pt-BR", opt);
+        // convertedEndDate = new Date(response.end_date).toLocaleDateString("pt-BR");
+        // convertedDeployDate = new Date(response.deploy_date).toLocaleDateString("pt-BR");
+        convertedStartDate = moment(response.start_date).format("DD/MM/YYYY");
+        convertedEndDate = moment(response.end_date).format("DD/MM/YYYY");
+        convertedDeployDate = moment(response.deploy_date).format("DD/MM/YYYY");
         $("#table tbody").append("<tr><td>" + response.task_cod + "</td>" +
                           "<td>" + response.task_type +"</td>" +
                           "<td>" + convertedStartDate +"</td>" +
