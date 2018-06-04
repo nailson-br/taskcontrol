@@ -74,7 +74,7 @@
           });
       }
 
-      saveNewSubTask = function() {
+      saveNewSubtask = function() {
         let token = document.querySelector('meta[name="csrf-token"]');
 
           $.ajax({
@@ -91,15 +91,15 @@
               success: function(response) {
                   // console.log(response);
                   // alert(response.message);
-                  addNewSubTaskLine(response);
+                  addNewSubtaskLine(response);
                   // recolhe o form para nova subtask
-                  // $('#newSubTaskLink').click();
-                  $('#newSubTaskForm')[0].reset();
+                  // $('#newSubtaskLink').click();
+                  $('#newSubtaskForm')[0].reset();
               }
           });
       }
 
-      addNewSubTaskLine = function (response) {
+      addNewSubtaskLine = function (response) {
         $("#subtask_table tbody").append("<tr><td>" + response.cod + "</td>" +
                           "<td>" + response.description +"</td>" +
                           "<td>" + response.type +"</td>" +
@@ -108,7 +108,7 @@
                           "</tr>");
       }
 
-      loadSubTasks = function() {
+      loadSubtasks = function() {
           $.ajax({
               url: '/lista_sub_tarefas/' + $('#task_cod').val(),
               type: 'GET',
@@ -117,7 +117,7 @@
                   // $('.tr').remove();
                   for (i = 0; i < response.length; i++) {
                     // console.log(response[i])
-                    addNewSubTaskLine(response[i]);
+                    addNewSubtaskLine(response[i]);
                   }
               }
           });

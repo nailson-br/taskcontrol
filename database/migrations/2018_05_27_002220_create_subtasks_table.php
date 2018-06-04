@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubTasksTable extends Migration
+class CreateSubtasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateSubTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_tasks', function (Blueprint $table) {
+        Schema::create('subtasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('task_id');
             $table->integer('cod');
             $table->string('type');
             $table->text('description');
+            $table->float('subtask_size');
             $table->boolean('back');
             $table->boolean('front');
             $table->boolean('qa');
@@ -32,6 +33,6 @@ class CreateSubTasksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sub_tasks');
+        Schema::drop('subtasks');
     }
 }

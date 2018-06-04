@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('task_cod');
             $table->string('task_type');
             $table->text('task_description');
+            $table->float('task_size');
             $table->date('start_date');
             $table->date('end_date');
             $table->date('deploy_date');

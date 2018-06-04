@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\SubTask;
+use App\Subtask;
 use App\Task;
 use Illuminate\Http\Request;
 
-class SubTaskController extends Controller
+class SubtaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class SubTaskController extends Controller
     {
         if ($task_cod) {
             $task = Task::where('task_cod', $task_cod)->first();
-            $subtasks = SubTask::where('task_id', $task->id)->get();
+            $subtasks = Subtask::where('task_id', $task->id)->get();
         } else {
-            $subtasks = SubTask::all();
+            $subtasks = Subtask::all();
         }
         return response()->json($subtasks, 200);
     }
@@ -45,13 +45,14 @@ class SubTaskController extends Controller
     public function store(Request $request)
     {
         //
-        $subtask = new SubTask();
+        $subtask = new Subtask();
         $task = Task::where('task_cod', $request->task_cod)->first();
 
         $subtask->task_id = $task->id;
         $subtask->cod = $request->subtask_cod;
         $subtask->type = $request->subtask_type;
         $subtask->description = $request->subtask_description;
+        $subtask->sub_task_size = $request->sub_task_size;
         $subtask->front = $request->front == 'true' ? true : false;
         $subtask->back = $request->back == 'true' ? true : false;
         $subtask->qa = $request->qa == 'true' ? true : false;

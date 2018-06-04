@@ -45,6 +45,7 @@ class TaskController extends Controller
         $task->task_cod = $request->task_cod;
         $task->task_type = $request->task_type;
         $task->task_description = $request->task_description;
+        $task->task_size = $request->task_size;
         $task->start_date = $request->start_date;
         $task->end_date = $request->end_date;
         $task->deploy_date = $request->deploy_date;

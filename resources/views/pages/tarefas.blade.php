@@ -41,7 +41,19 @@
                 <input id="deploy_date" name="deploy_date" type="date" class="form-control input-md" >
             </div>
 
-            <div class="col-md-3 text-center">
+            <label class="col-md-1 control-label" for="task_size">size</label>
+            <div class="col-md-2">
+                <select id="task_size" name="task_size" class="form-control">
+                    <option value="0,5">PP</option>
+                    <option value="1">P</option>
+                    <option value="2">M</option>
+                    <option value="4">G</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 text-right">
                 <div class="form-group">
                     <label class="checkbox-inline">
                         <input id="back" type="checkbox" data-toggle="toggle">Back

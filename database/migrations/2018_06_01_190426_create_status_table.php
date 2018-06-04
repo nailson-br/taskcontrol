@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubTaskHistoriesTable extends Migration
+class CreateStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateSubTaskHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_task_histories', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('status');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateSubTaskHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sub_task_histories');
+        Schema::drop('status');
     }
 }
