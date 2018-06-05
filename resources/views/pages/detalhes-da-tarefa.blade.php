@@ -75,14 +75,20 @@
                 <option value="7">done</option>
             </select>
         </div>
-
-        <label class="col-md-1 control-label" for="increment">incremento</label>
-        <div class="col-md-1">
-            <input id="increment" name="increment" type="text" value="" placeholder="%" class="form-control input-md">
+        <div class="col-md-2">
+            <label class="checkbox-inline">
+                <input id="progress" type="checkbox" data-toggle="toggle">Progresso?
+            </label>
         </div>
-
         <div class="col-md-2">
             <button id="submit" name="submit" class="btn btn-primary" type="button" onclick="save();">Registrar</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-1 control-label" for="obs">Obs:</label>
+        <div class="col-md-11">
+            <textarea id="obs" name="obs" type="text" class="form-control input-md" rows="2" placeholder="Observações..."></textarea>
         </div>
     </div>
 
@@ -142,6 +148,7 @@
                     </label>
                 </div>
             </div>
+
             <div class="col-md-2 ">
                 <button style="width: 100%" id="submit" name="submit" class="btn btn-primary" type="button" onclick="saveNewSubTask();">Adicionar</button>
             </div>

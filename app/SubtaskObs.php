@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TaskHistory extends Model
+class SubtaskObs extends Model
 {
     //
-    protected $table = 'task_histories';
+    protected $table = 'subtask_obs';
 }
