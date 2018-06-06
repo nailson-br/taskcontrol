@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Task;
+use App\TaskHistory;
 use Illuminate\Http\Request;
 use Input;
 
@@ -101,5 +102,41 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Registra o progresso de uma atividade do tipo Task ou Bug
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function registerProgress(Request $request, $id)
+    {
+        $task = Task::find($id);
+        $taskHistory = new TaskHistory();
+        $taskHistory->
+
+        $activityDate = Input::get('activityDate');
+        $activityStatus = Input::get('status');
+        $progress = Input::get('progress');
+
+        // Tratando o progresso de acordo com o status fornecido
+        // Se é To Do, ajusta o progresso em 0%
+        if ($activityStatus == 1) { // to do
+
+        } elseif ($activityStatus == 2) { // em dev
+
+        } elseif ($activityStatus == 3) { // dev fin
+
+        } elseif ($activityStatus == 4) { // pronto qa
+
+        } elseif ($activityStatus == 5) { // qa
+
+        } elseif ($activityStatus == 6) { // pronto deploy
+
+        } elseif ($activityStatus == 7) { // done
+
+        }
     }
 }

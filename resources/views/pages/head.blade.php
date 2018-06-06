@@ -28,6 +28,7 @@
                   start_date:$('#start_date').val(),
                   end_date:$('#end_date').val(),
                   deploy_date:$('#deploy_date').val(),
+                  task_size:$('#task_size').val(),
                   back:$('#back').is(':checked'),
                   front:$('#front').is(':checked'),
                   qa:$('#qa').is(':checked')

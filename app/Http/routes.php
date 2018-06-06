@@ -25,3 +25,5 @@ Route::get('detalhes_da_tarefa/{id}', 'TaskController@edit');
 
 Route::post('sub_tarefa', 'SubTaskController@store');
 Route::get('lista_sub_tarefas/{id?}', 'SubTaskController@index');
+
+Route::post('registrar_andamento/{id}', 'TaskController@registerProgress');
